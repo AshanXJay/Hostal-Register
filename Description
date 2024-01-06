@@ -1,18 +1,5 @@
 Scenario
-target audience-students who residing in university  inside hostels
-
-purpose-to becoming easy day to day to life for university students 
-
-context-the scenario is based on university students residing in  inside hostels withing the university.
-
-problem-If someone need to go out from university premises..they should physically record on a book about their leavings.such as they should note about their name,room number,enrollement number and have to put sign on it. But the case is when if some student need to go outside from the university premises,when if one  student need to go outside from the university premises,when after they come to lectures in a university as usual,they have to go hostels again and update the that book.even if they are already within the campus but at a significant distance from their current location .Imagine one student already in g6 hall and she  need to go town ,but before go out have to go hostel called cattleya to update that book.
-
-solution-the deveplopment of a software solution that would eliminate the needing physically sighn the book.
-
-efficiency-it can reduce time wasting and haave a posibility to prohobit the unnesssesary incudents that students face if someone go out from university premises without updating the book.suc as if someone face vehicle acccident or harrasment by someone in outside ,even though they don't update that book about teir leaves,it will be a enormouse problem.students don't need getting physically lived.
-
-process-students can easily approch the university security room and able show their university identity card and able to update that book systamatically.when someone update that book like this ,the security guide in hostels can see it through their computer screen.aafter that he or she can update that book in physically about student's leavings.after come to hostel students can update that book physically conveying about coming back to hostel.
-
+If someone needs to go out from the university premises. They are required to physically record on a book about their leaving. Such as they should note their name, room number, enrollment number and sign on it. But the case if some student needs to go outside the university premises after they attended to a lecture in a lecture hall located on the opposite side of the campus from the hostel, they have to go back to the hostel again and update the book regardless of the significant distance from their current location to the hostel. Imagine one student already in g6 hall and she needs to go to the town but before she goes out, she has to go back to the hostel called Cattleya to update the book despite the distance. As a result, if she chooses to go out without signing the book, this poses a significant safety risk because if she encounters an accident or emergency, there would be no official record of her presence and the lack of record can hinder the investigation or necessary support that should be provided to the affected students.
 
 Problem
 The main problem in our scenario is the unnecessary inconvenience and time wastage students face by having to physically return to the hostel to sign the book every time they go outside, regardless of the distance from their current location.
