@@ -1,0 +1,10 @@
+START: Hostel register 
+Enter user type
+IF (user type is front end)
+THEN enter the enrollment number
+    IF (The enrollment number is in database)
+    THEN input the destination 
+    Add record to the data base(enrollment number, destination, time)
+    Display successfully updated
+    ELSE Display invalid number
+ELSE (user end is hostel)
