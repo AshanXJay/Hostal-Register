@@ -7,7 +7,16 @@ THEN enter the enrollment number
     Add record to the data base(enrollment number, destination, time)
     Display successfully updated
     ELSE Display invalid number
-    ENDIF [Goto line 4]
+    ENDIF
 ELSE (user end is hostel)
+Select hostel 
+Store hostel name
+ IF (check new record on database)
+ Get enrollment number 
+ Fetch student's details from students's database
+  IF(hostel A)
+  Display sign out details to A
+  ELSE Display sign out details to B
+
 
 ENDIF
