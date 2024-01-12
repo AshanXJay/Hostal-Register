@@ -18,5 +18,4 @@ Store hostel name
   Display sign out details to A
   ELSE Display sign out details to B
 
-
 ENDIF
