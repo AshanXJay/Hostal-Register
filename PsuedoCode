@@ -1,5 +1,5 @@
 START: Hostel register 
-Enter user type
+Enter user type(front end/hostal end
 IF (user type is front end)
 THEN enter the enrollment number
     IF (The enrollment number is in database)
