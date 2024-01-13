@@ -1,1 +1,14 @@
-
+START :  Front-end
+  //declare variables
+  char enroll_no
+  char destination
+  Get student’s enrollment number (enroll_no)
+  Check enrollment number with students’ database
+   IF(enrollment number is in database)
+       THEN Input destination
+       Add record to database (Enrollment number, Destination, Time)
+       Display Successfully updated
+    ELSE Display Invalid Enrollment number
+       GOTO: Get student’s enrollment number (enroll_no)
+    ENDIF
+END
