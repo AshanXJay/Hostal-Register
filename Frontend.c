@@ -1,11 +1,27 @@
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
 // Assuming a function that checks the enrollment number in the database
 int check_enrollment(char *enroll_no) {
-    // Implement the function to check the enrollment number in the database
-    // Return 1 if the enrollment number is in the database, otherwise return 0
-    return 1;
+    FILE *file = fopen("D:/GitHub/Hostal-Register/Students.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        return 0;
+    }
+
+    char part[50];
+    while (fscanf(file, " %[^,\n]", part) != EOF) {
+        if (strcmp(part, enroll_no) == 0) {
+            fclose(file);
+            return 1;
+        }
+        // Skip to the next line
+        fscanf(file, "%*[^\n]\n");
+    }
+
+    fclose(file);
+    return 0;
 }
 
 // Assuming a function that adds a record to the database
