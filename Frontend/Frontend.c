@@ -30,9 +30,9 @@ void add_record(char *enroll_no, char *destination, time_t t){
         printf("Failed to create the file.\n");
 
     }
-  		fprintf(fp,"%s",enroll_no);
-    	fprintf(fp,"%s",destination);
-        //fprintf(fp,"%d",t);
+  		fprintf(fp,"%s ",enroll_no);
+    	fprintf(fp,"%s ",destination);
+        fprintf(fp,"%d",t);
 		
 		printf("Student records saved successfully\n");
     	fclose(fp);
