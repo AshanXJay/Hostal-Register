@@ -5,7 +5,7 @@
 
 // Assuming a function that checks the enrollment number in the database
 int check_enrollment(char *enroll_no) {
-    FILE *s_data = fopen("AshanXJay/Hostal-Register/Students.txt, "r");
+    FILE *s_data = fopen("AshanXJay/Hostal-Register/Students.txt", "r");
     if (s_data == NULL) {
         printf("Error opening file\n");
         return 0;
@@ -24,22 +24,21 @@ int check_enrollment(char *enroll_no) {
 }
 
 // Assuming a function that adds a record to the database
-void add_record(char *enroll_no, char *destination, time_t t) {
-    fp=fopen("AshanXJay/Hostal-Register/data/Records.txt,"w");
-	if (fp == NULL) 
-	{
+void add_record(char *enroll_no, char *destination, time_t t){
+    FILE *fp=fopen("AshanXJay/Hostal-Register/data/Records.txt","w");
+	    if (fp == NULL) {
         printf("Failed to create the file.\n");
-        return 1;
+
     }
   		fprintf(fp,"%s",enroll_no);
     	fprintf(fp,"%s",destination);
-        fprintf(fp,"%d",t);
+        //fprintf(fp,"%d",t);
 		
 		printf("Student records saved successfully\n");
-    }
-	fclose(fp);
+    	fclose(fp);
 
-}
+    }
+
 
 int main() {
     char enroll_input[8];
