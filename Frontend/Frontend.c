@@ -5,7 +5,7 @@
 
 // Assuming a function that checks the enrollment number in the database
 int check_enrollment(char *enroll_no) {
-    FILE *s_data = fopen("D:/GitHub/Hostal-Register/Students.txt", "r");
+    FILE *s_data = fopen("AshanXJay/Hostal-Register/Students.txt, "r");
     if (s_data == NULL) {
         printf("Error opening file\n");
         return 0;
@@ -25,7 +25,7 @@ int check_enrollment(char *enroll_no) {
 
 // Assuming a function that adds a record to the database
 void add_record(char *enroll_no, char *destination, time_t t) {
-    fp=fopen("student_records.txt","w");
+    fp=fopen("AshanXJay/Hostal-Register/data/Records.txt,"w");
 	if (fp == NULL) 
 	{
         printf("Failed to create the file.\n");
