@@ -1,1 +1,19 @@
-
+START
+  //Declare variables
+  char Hostel_name
+  char enroll_num          
+  select hostel
+  store hostel name (Hostel_name)
+  open data base
+  check new records
+  IF received new records
+    THEN get enrollment numb (enroll_no)
+  ELSE 
+    GO TO:check new  records
+  fetch student's details from student's database
+  IF student's belongs to hostel A
+    THEN display records to hostel A (enroll_ num,destination,time)
+  ELSE display records to hostel B
+  ENDIF
+  ENDIF
+END
