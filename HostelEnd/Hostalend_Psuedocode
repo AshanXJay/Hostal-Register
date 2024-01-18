@@ -13,7 +13,7 @@ START
   fetch student's details from student's database
   IF student's belongs to hostel A
     THEN display records to hostel A (enroll_ num,destination,time)
-  ELSE display records to hostel B
+  ELSE display records to hostel B (enroll_ num,destination,time)
   ENDIF
   ENDIF
 END
