@@ -3,8 +3,9 @@
 #include <string.h>
 #include <ctype.h>
 
-// Assuming a function that checks the enrollment number in the database
+// Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
+    // Open the file that contains student data
     FILE *s_data = fopen("/workspaces/Hostal-Register/Students.txt", "r");
     if (s_data == NULL) {
         printf("Error opening file\n");
@@ -12,32 +13,36 @@ int check_enrollment(char *enroll_no) {
     }
 
     char enroll_data[15];
+    // Read each line from the file
     while (fscanf(s_data, "%s", enroll_data) != EOF) {
+        // If the read enrollment number matches the input enrollment number
         if (strcmp(enroll_data, enroll_no) == 0) {
+            // Close the file and return 1 (true)
             fclose(s_data);
             return 1;
         }
     }
 
+    // Close the file and return 0 (false) if no match was found
     fclose(s_data);
     return 0;
 }
 
-// Assuming a function that adds a record to the database
+// Function to add a record to the database
 void add_record(char *enroll_no, char *destination, time_t t){
+    // Open the file where records are stored
     FILE *fp=fopen("/workspaces/Hostal-Register/data/Records.txt","w");
-	    if (fp == NULL) {
+    if (fp == NULL) {
         printf("Failed to create the file.\n");
-
     }
-  		fprintf(fp,"%s ",enroll_no);
-    	fprintf(fp,"%s ",destination);
-        fprintf(fp,"%s", ctime(&t));
-		printf("Student records saved successfully\n");
-    	fclose(fp);
-
-    }
-
+    // Write the enrollment number, destination, and current time to the file
+    fprintf(fp,"%s ",enroll_no);
+    fprintf(fp,"%s ",destination);
+    fprintf(fp,"%s", ctime(&t));
+    printf("Student records saved successfully\n");
+    // Close the file
+    fclose(fp);
+}
 
 int main() {
     char enroll_input[8];
@@ -49,16 +54,19 @@ int main() {
         printf("Enter student's enrollment number: ");
         scanf("%s", enroll_input);
 
-        // Convert to uppercase
+        // Convert the input enrollment number to uppercase
         for(int i = 0; enroll_input[i]; i++){
             enroll_input[i] = toupper(enroll_input[i]);
         }
 
+        // Split the input enrollment number into degree, year, and number
         char degree[4], year[3], number[4];
         sscanf(enroll_input, "%3s%2s%3s", degree, year, number);
+        // Format the enrollment number
         sprintf(enroll_no, "UWU/%s/%s/%s", degree, year, number);
         printf("%s\n", enroll_no); 
-              
+
+        // If the enrollment number exists in the database
         if(check_enrollment(enroll_no)) {
             printf("Enter destination: ");
             scanf("%s", destination);
@@ -66,6 +74,7 @@ int main() {
             // Get the current time
             t = time(NULL);
 
+            // Add a record to the database
             add_record(enroll_no, destination, t);
 
             printf("Successfully updated\n");
