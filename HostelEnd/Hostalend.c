@@ -21,7 +21,7 @@ int countLines(FILE *records) {
 int new_records_exist() {
     static int prevCount = 0;
     int newCount;
-    FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
+    FILE *records = fopen("Record.txt", "r");
 
     if (records == NULL) {
         printf("Cannot open file \n");
@@ -40,9 +40,23 @@ int new_records_exist() {
 }
 
 // Get enrollment number
-void get_enrollment_number(char* enroll_num) {
-    // Replace with your actual logic
-    strcpy(enroll_num, "123456"); // Assuming enrollment number is 123456 for this example
+void get_enrollment_number(char* enroll_num[100], char* destination[100], char* time[100]) {
+    FILE *file = fopen("Records.txt", "r");
+    if (file == NULL) {
+        printf("Cannot open file\n");
+        return;
+    }
+
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        // This loop will read the file line by line until the end, 
+        // so at the end of the loop, 'line' will contain the last line of the file
+    }
+
+    // Assuming the line is in the format "enrollment_number destination time"
+    sscanf(line, "%s %s %s", enroll_num, destination, time);
+
+    fclose(file);
 }
 
 // Fetch student details
@@ -51,18 +65,12 @@ char* fetch_student_details(char* enroll_num) {
     return "Student Details"; // Assuming student details are "Student Details" for this example
 }
 
-// Check if student belongs to hostel A
-int student_belongs_to_hostel_A(char* student_details) {
-    // Replace with your actual logic
-    return 1; // Assuming student always belongs to hostel A for this example
-}
-
 int main()
 {
     FILE *file;
-    char hostel_name[100], enroll_num[100];
-    /* printf("Enter the hostel name: ");
-    scanf("%s", hostel_name); */
+    char enroll_num[100], destination[100], time[100], hostel_name[100];  
+    printf("Enter the hostel name: ");
+    scanf("%s", hostel_name);
 
     while (1)
     {
