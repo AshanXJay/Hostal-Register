@@ -21,7 +21,7 @@ int countLines(FILE *records) {
 int new_records_exist() {
     static int prevCount = 0;
     int newCount;
-    FILE *records = fopen("Record.txt", "r");
+    FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
 
     if (records == NULL) {
         printf("Cannot open file \n");
@@ -61,8 +61,8 @@ int main()
 {
     FILE *file;
     char hostel_name[100], enroll_num[100];
-    printf("Enter the hostel name: ");
-    scanf("%s", hostel_name);
+    /* printf("Enter the hostel name: ");
+    scanf("%s", hostel_name); */
 
     while (1)
     {
