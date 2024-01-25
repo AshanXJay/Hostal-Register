@@ -62,13 +62,14 @@ void get_enrollment_number(char* enroll_num[15], char* destination[32], double* 
 // Fetch student details
 // Define a struct to hold the student details
 typedef struct {
-    char name[50];
+    char lastname[50];
+    char initials[50];
     char hostel[50];
 } StudentDetails;
 
 // Fetch student details
 StudentDetails fetch_student_details(char* enroll_num) {
-    FILE *file = fopen("Students.txt", "r");
+    FILE *file = fopen("D:/GitHub/Hostal-Register/data/Students.txt", "r");
     if (file == NULL) {
         printf("Cannot open file\n");
         return (StudentDetails){"", ""};
@@ -79,11 +80,11 @@ StudentDetails fetch_student_details(char* enroll_num) {
     while (fgets(line, sizeof(line), file)) {
         // Assuming the line is in the format "enrollment_number name hostel"
         char temp_enroll_num[16];
-        sscanf(line, "%15s", temp_enroll_num);
+        sscanf(line, "%s", temp_enroll_num);
 
         // If the enrollment number in the line matches the input enrollment number
         if (strcmp(temp_enroll_num, enroll_num) == 0) {
-            sscanf(line, "%*s %49[^0-9] %49s", details.name, details.hostel);
+            sscanf(line, "%*s %s %s %s", details.lastname, details.initials, details.hostel);
             break;
         }
     }
@@ -111,9 +112,9 @@ int main()
             continue;
         }
 
-        char *student_details = fetch_student_details(enroll_num);
+        //char *student_details = fetch_student_details(enroll_num);
 
-        if (student_belongs_to_hostel_A(student_details))
+        if (strcmp(hostel_name, "hostel_name"))
         {
             printf("Enrollment number: %s, Destination: %s, Time: %ld\n", enroll_num, "hostel_name", time);
         }
