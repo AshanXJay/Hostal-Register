@@ -47,7 +47,7 @@ void get_enrollment_number(char* enroll_num) {
 
 // Fetch student details
 char* fetch_student_details(char* enroll_num) {
-    // Replace with your actual logic
+    
     return "Student Details"; // Assuming student details are "Student Details" for this example
 }
 
