@@ -6,7 +6,7 @@
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
     // Open the file that contains student data
-    FILE *s_data = fopen("/workspaces/Hostal-Register/data/Students.txt", "r");
+    FILE *s_data = fopen("/workspaces/Hostal-Register/data/Stdents.txt", "r");
     if (s_data == NULL) {
         printf("Error opening file\n");
         return 0;
