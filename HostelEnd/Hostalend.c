@@ -1,11 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 // Check if new records exist
+int countLines(FILE *file) {
+    int count = 0;
+    char c;
+
+    // Extract characters from the file and store in character c
+    for (c = getc(file); c != EOF; c = getc(file)) {
+        if (c == '\n') { // Increment count if this character is newline
+            count = count + 1;
+        }
+    }
+
+    return count;
+}
+
 int new_records_exist() {
-    // Replace with your actual logic
-    return 1; // Assuming new records always exist for this example
+    static int prevCount = 0;
+    int newCount;
+    FILE *file = fopen("Record.txt", "r");
+
+    if (file == NULL) {
+        printf("Cannot open file \n");
+        exit(0);
+    }
+
+    newCount = countLines(file);
+    fclose(file);
+
+    if (newCount > prevCount) {
+        prevCount = newCount;
+        return 1; // new records exist
+    }
+
+    return 0; // no new records
 }
 
 // Get enrollment number
@@ -28,6 +59,7 @@ int student_belongs_to_hostel_A(char* student_details) {
 
 int main()
 {
+    FILE *file;
     char hostel_name[100], enroll_num[100];
     printf("Enter the hostel name: ");
     scanf("%s", hostel_name);
