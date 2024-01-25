@@ -39,14 +39,22 @@ int new_records_exist() {
     return 0; // no new records
 }
 
+// Define a struct to hold the student details
+typedef struct {
+    char enroll_num[15];
+    char destination[32];
+    long time;
+} RecordDetails;
+
 // Get enrollment number
-void get_enrollment_number(char* enroll_num[15], char* destination[32], double* time) {
+RecordDetails get_enrollment_number() {
     FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
     if (records == NULL) {
         printf("Cannot open file\n");
-        return;
+        return(RecordDetails){"", "", 0};
     }
 
+    RecordDetails record = {"", "", 0};
     char line[256];
     while (fgets(line, sizeof(line), records)) {
         // This loop will read the file line by line until the end, 
@@ -54,12 +62,12 @@ void get_enrollment_number(char* enroll_num[15], char* destination[32], double* 
     }
 
     // Assuming the line is in the format "enrollment_number destination time"
-    sscanf(line, "%s %s %ld", enroll_num[15], destination[32], time);
+    sscanf(line, "%s %s %ld", record.enroll_num, record.destination, &record.time);
 
     fclose(records);
+    return record;
 }
 
-// Fetch student details
 // Define a struct to hold the student details
 typedef struct {
     char lastname[50];
@@ -72,10 +80,10 @@ StudentDetails fetch_student_details(char* enroll_num) {
     FILE *file = fopen("D:/GitHub/Hostal-Register/data/Students.txt", "r");
     if (file == NULL) {
         printf("Cannot open file\n");
-        return (StudentDetails){"", ""};
+        return (StudentDetails){"", "", ""};
     }
 
-    StudentDetails details = {"", ""};
+    StudentDetails student = {"", "", ""};
     char line[256];
     while (fgets(line, sizeof(line), file)) {
         // Assuming the line is in the format "enrollment_number name hostel"
@@ -84,43 +92,34 @@ StudentDetails fetch_student_details(char* enroll_num) {
 
         // If the enrollment number in the line matches the input enrollment number
         if (strcmp(temp_enroll_num, enroll_num) == 0) {
-            sscanf(line, "%*s %s %s %s", details.lastname, details.initials, details.hostel);
+            sscanf(line, "%*s %s %s %s", student.lastname, student.initials, student.hostel);
             break;
         }
     }
 
     fclose(file);
-    return details;
+    return student;
 }
 
 int main()
 {
-    FILE *file;
-    char enroll_num[15], destination[32], hostel_name[5]; 
-    double time;
-    printf("Enter the hostel name: ");
-    scanf("%s", hostel_name);
+    char hostel_name[5]; 
 
     while (1)
     {
         if (new_records_exist())
         {
-            get_enrollment_number(enroll_num, destination, &time);
+           RecordDetails record = get_enrollment_number();
+           StudentDetails student = fetch_student_details(record.enroll_num);
+
+           if (strcmp(hostel_name, student.hostel) == 0)
+           {
+               printf("Enrollment number: %s, Destination: %s, Time: %ld\n", record.enroll_num, record.destination, record.time);
+           }
         }
         else
         {
             continue;
-        }
-
-        //char *student_details = fetch_student_details(enroll_num);
-
-        if (strcmp(hostel_name, "hostel_name"))
-        {
-            printf("Enrollment number: %s, Destination: %s, Time: %ld\n", enroll_num, "hostel_name", time);
-        }
-        else
-        {
-            printf("Enrollment number: %s, Destination: %s, Time: %ld\n", enroll_num, "hostel_name", time);
         }
     }
 
