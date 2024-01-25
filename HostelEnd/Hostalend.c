@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 // Check if new records exist
 int countLines(FILE *records) {
@@ -103,7 +104,7 @@ StudentDetails fetch_student_details(char* enroll_num) {
 
 int main()
 {
-    char hostel_name[5]; 
+    //char hostel_name[5]; 
 
     while (1)
     {
@@ -112,16 +113,23 @@ int main()
            RecordDetails record = get_enrollment_number();
            StudentDetails student = fetch_student_details(record.enroll_num);
 
-           if (strcmp(hostel_name, student.hostel) == 0)
+        char time_str[20]; // Buffer to hold the formatted time
+        time_t time = (time_t)record.time; // Convert long to time_t
+        struct tm *tm_info = localtime(&time);
+        strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
+
+        printf("Enrollment number: %s, Destination: %s, Time: %s\n", record.enroll_num, record.destination, time_str);
+
+           /*  if (strcmp(hostel_name, student.hostel) == 0)
            {
                printf("Enrollment number: %s, Destination: %s, Time: %ld\n", record.enroll_num, record.destination, record.time);
-           }
+           } // This brace was closing the if statement prematurely
         }
-        else
+         else
         {
             continue;
-        }
+        } */
+         }
     }
-
-    return 0;
+        return 0;
 }
