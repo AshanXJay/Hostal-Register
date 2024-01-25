@@ -4,12 +4,12 @@
 #include <unistd.h>
 
 // Check if new records exist
-int countLines(FILE *file) {
+int countLines(FILE *records) {
     int count = 0;
     char c;
 
     // Extract characters from the file and store in character c
-    for (c = getc(file); c != EOF; c = getc(file)) {
+    for (c = getc(records); c != EOF; c = getc(records)) {
         if (c == '\n') { // Increment count if this character is newline
             count = count + 1;
         }
@@ -21,15 +21,15 @@ int countLines(FILE *file) {
 int new_records_exist() {
     static int prevCount = 0;
     int newCount;
-    FILE *file = fopen("Record.txt", "r");
+    FILE *records = fopen("Record.txt", "r");
 
-    if (file == NULL) {
+    if (records == NULL) {
         printf("Cannot open file \n");
         exit(0);
     }
 
-    newCount = countLines(file);
-    fclose(file);
+    newCount = countLines(records);
+    fclose(records);
 
     if (newCount > prevCount) {
         prevCount = newCount;
