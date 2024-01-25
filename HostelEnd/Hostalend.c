@@ -60,9 +60,36 @@ void get_enrollment_number(char* enroll_num[15], char* destination[32], double* 
 }
 
 // Fetch student details
-char* fetch_student_details(char* enroll_num) {
-    
-    return "Student Details"; // Assuming student details are "Student Details" for this example
+// Define a struct to hold the student details
+typedef struct {
+    char name[50];
+    char hostel[50];
+} StudentDetails;
+
+// Fetch student details
+StudentDetails fetch_student_details(char* enroll_num) {
+    FILE *file = fopen("Students.txt", "r");
+    if (file == NULL) {
+        printf("Cannot open file\n");
+        return (StudentDetails){"", ""};
+    }
+
+    StudentDetails details = {"", ""};
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        // Assuming the line is in the format "enrollment_number name hostel"
+        char temp_enroll_num[16];
+        sscanf(line, "%15s", temp_enroll_num);
+
+        // If the enrollment number in the line matches the input enrollment number
+        if (strcmp(temp_enroll_num, enroll_num) == 0) {
+            sscanf(line, "%*s %49[^0-9] %49s", details.name, details.hostel);
+            break;
+        }
+    }
+
+    fclose(file);
+    return details;
 }
 
 int main()
