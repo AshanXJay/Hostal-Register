@@ -1,0 +1,4 @@
+janani cst22055 Front
+ashan cst22002 Hostel
+chamudya cst22018 Front
+admin pass Hostel

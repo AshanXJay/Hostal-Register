@@ -5,7 +5,7 @@
 #define MAX_SIZE 100
 
 char* login(char* entered_username, char* entered_password) {
-    FILE* file = fopen("D:/SYSTEM/Desktop/users.txt", "r");
+    FILE* file = fopen("D:/GitHub/Hostal-Register/data/Users.txt", "r");
     if (file == NULL) {
         printf("Could not open file\n");
         return NULL;
