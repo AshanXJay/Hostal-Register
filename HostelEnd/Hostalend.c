@@ -21,7 +21,7 @@ int countLines(FILE *records) {
 int new_records_exist() {
     static int prevCount = 0;
     int newCount;
-    FILE *records = fopen("Record.txt", "r");
+    FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
 
     if (records == NULL) {
         printf("Cannot open file \n");
@@ -40,23 +40,23 @@ int new_records_exist() {
 }
 
 // Get enrollment number
-void get_enrollment_number(char* enroll_num[100], char* destination[100], char* time[100]) {
-    FILE *file = fopen("Records.txt", "r");
-    if (file == NULL) {
+void get_enrollment_number(char* enroll_num[15], char* destination[32], double* time) {
+    FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
+    if (records == NULL) {
         printf("Cannot open file\n");
         return;
     }
 
     char line[256];
-    while (fgets(line, sizeof(line), file)) {
+    while (fgets(line, sizeof(line), records)) {
         // This loop will read the file line by line until the end, 
         // so at the end of the loop, 'line' will contain the last line of the file
     }
 
     // Assuming the line is in the format "enrollment_number destination time"
-    sscanf(line, "%s %s %s", enroll_num, destination, time);
+    sscanf(line, "%s %s %ld", enroll_num[15], destination[32], time);
 
-    fclose(file);
+    fclose(records);
 }
 
 // Fetch student details
@@ -68,7 +68,8 @@ char* fetch_student_details(char* enroll_num) {
 int main()
 {
     FILE *file;
-    char enroll_num[100], destination[100], time[100], hostel_name[100];  
+    char enroll_num[15], destination[32], hostel_name[5]; 
+    double time;
     printf("Enter the hostel name: ");
     scanf("%s", hostel_name);
 
@@ -76,7 +77,7 @@ int main()
     {
         if (new_records_exist())
         {
-            get_enrollment_number(enroll_num);
+            get_enrollment_number(enroll_num, destination, &time);
         }
         else
         {
@@ -87,11 +88,11 @@ int main()
 
         if (student_belongs_to_hostel_A(student_details))
         {
-            printf("Enrollment number: %s, Destination: %s, Time: %s\n", enroll_num, "hostel_name", "time");
+            printf("Enrollment number: %s, Destination: %s, Time: %ld\n", enroll_num, "hostel_name", time);
         }
         else
         {
-            printf("Enrollment number: %s, Destination: %s, Time: %s\n", enroll_num, "hostel_name", "time");
+            printf("Enrollment number: %s, Destination: %s, Time: %ld\n", enroll_num, "hostel_name", time);
         }
     }
 
