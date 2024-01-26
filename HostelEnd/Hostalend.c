@@ -121,7 +121,8 @@ int main()
            strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
            // Print the record details
-           printf("Enrollment number: %s, Destination: %s, Time: %s\n", record.enroll_num, record.destination, time_str);
+           printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
+
         }
     }
 
