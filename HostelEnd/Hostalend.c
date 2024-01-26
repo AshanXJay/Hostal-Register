@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <time.h>
 
-// Check if new records exist
+// Function to count the number of lines in a file
 int countLines(FILE *records) {
     int count = 0;
     char c;
@@ -19,6 +19,7 @@ int countLines(FILE *records) {
     return count;
 }
 
+// Function to check if new records exist in the file
 int new_records_exist() {
     static int prevCount = 0;
     int newCount;
@@ -40,14 +41,14 @@ int new_records_exist() {
     return 0; // no new records
 }
 
-// Define a struct to hold the student details
+// Struct to hold the record details
 typedef struct {
     char enroll_num[15];
     char destination[32];
     long time;
 } RecordDetails;
 
-// Get enrollment number
+// Function to get the last record's details from the file
 RecordDetails get_enrollment_number() {
     FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
     if (records == NULL) {
@@ -69,14 +70,14 @@ RecordDetails get_enrollment_number() {
     return record;
 }
 
-// Define a struct to hold the student details
+// Struct to hold the student details
 typedef struct {
     char lastname[50];
     char initials[50];
     char hostel[50];
 } StudentDetails;
 
-// Fetch student details
+// Function to fetch the student details based on the enrollment number
 StudentDetails fetch_student_details(char* enroll_num) {
     FILE *file = fopen("D:/GitHub/Hostal-Register/data/Students.txt", "r");
     if (file == NULL) {
@@ -102,34 +103,27 @@ StudentDetails fetch_student_details(char* enroll_num) {
     return student;
 }
 
+// Main function
 int main()
 {
-    //char hostel_name[5]; 
-
     while (1)
     {
         if (new_records_exist())
         {
+           // Fetch the last record and the corresponding student details
            RecordDetails record = get_enrollment_number();
            StudentDetails student = fetch_student_details(record.enroll_num);
 
-        char time_str[20]; // Buffer to hold the formatted time
-        time_t time = (time_t)record.time; // Convert long to time_t
-        struct tm *tm_info = localtime(&time);
-        strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
+           // Convert the timestamp to a human-readable format
+           char time_str[20]; // Buffer to hold the formatted time
+           time_t time = (time_t)record.time; // Convert long to time_t
+           struct tm *tm_info = localtime(&time);
+           strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
-        printf("Enrollment number: %s, Destination: %s, Time: %s\n", record.enroll_num, record.destination, time_str);
-
-           /*  if (strcmp(hostel_name, student.hostel) == 0)
-           {
-               printf("Enrollment number: %s, Destination: %s, Time: %ld\n", record.enroll_num, record.destination, record.time);
-           } // This brace was closing the if statement prematurely
+           // Print the record details
+           printf("Enrollment number: %s, Destination: %s, Time: %s\n", record.enroll_num, record.destination, time_str);
         }
-         else
-        {
-            continue;
-        } */
-         }
     }
-        return 0;
+
+    return 0;
 }
