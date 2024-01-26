@@ -78,7 +78,6 @@ int main() {
             add_record(enroll_no, destination, t);
 
             printf("Successfully updated\n");
-            break;
         } else {
             printf("Invalid Enrollment number\n");
         }
