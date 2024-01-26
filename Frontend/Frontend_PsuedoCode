@@ -1,38 +1,11 @@
-START: front end
-     Define function: check _enrollment (enroll _no)
-     Open the “Students.txt” file
-     IF (The file opening fails)
-     THEN Display “Error opening file” and return 0;
-     While there are still strings to read from the file  s_data
-         IF the enroll_data is equal to enroll_no
-         THEN close the files data and return 1
-     Close the file  s_data and return 0
-     Define function: add _record(enroll _no, destination, t)
-     Open the “records.txt” file for writing
-     IF (file opening fails)
-     THEN Display “Failed to create the file”
-     Write enroll _no, destination and current time to the file
-     Close the file
-     Display “student records saved successfully”
-     Define the main function
-     char enroll_input, enroll_no, destination;
-     time_t t;
-     While (True)
-           Display “Enter student’s enrollment number:”
-           Read enroll _input from user
-           Convert enroll _input to uppercase
-           Extract degree, year and number from enroll _input using sscanf format enroll _no as “UWU/degree/year/number”
-           Display enroll_no
-           IF check_enrollment (enroll_no) returns true
-           THEN Display "Enter destination:" 
-           Read destination from user
-           Get the current time and store it in t
-           Call add record(enroll_no, destination, t)
-           Display "Successfully updated"
-           Break the loop
-           ELSE Display "Invalid Enrollment number"
-           ENDIF
-           Return 0
-END
-
-
+START: Hostel-Register
+    Get a student's enrollment number and read the input.
+    Convert the input enrollment number to uppercase.
+    Split the input enrollment number into degree, year, and number.
+    Format the enrollment number.
+    IF the enrollment number exists in the database (checked using the check_enrollment function):
+        Get a destination and read the input.
+        Get the current time.
+        Add a record to the database using the add_record function.
+        Print a success message and continue the loop.
+    ELSE print an error message and continue the loop.
