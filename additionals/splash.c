@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
+#include "middle.c"
 
 void splash_screen() {
-    printf("Loading...\n");
+    printcm("Loading...\n");
     for (int i = 0; i < 10; i++) {
-        printf(".");
+        printcm(".");
         fflush(stdout);
         sleep(1);
     }

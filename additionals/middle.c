@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 
 // Function prototypes
 void print_centered(char *str);
@@ -26,7 +27,13 @@ void printc(char *str) {
     printf("%*s%s\n", padding_left, "", str);
 }
 
-void printcm(char *str) {
+void printcm(const char *format, ...) {
+    char str[1024];
+    va_list args;
+    va_start(args, format);
+    vsprintf(str, format, args);
+    va_end(args);
+
     int width = get_console_width();
     int height = get_console_height();
     int length = strlen(str);
@@ -38,12 +45,12 @@ void printcm(char *str) {
     printf("%*s%s\n", padding_left, "", str);
 }
 
-int main(){
+/* int main(){
     while (1) {
         system("cls"); // Clear the console
         char str[] = "Hello, World!";
-        printc(str);
+        printcm(str);
         Sleep(500); // Wait for 500 milliseconds
     }
     return 0;
-}
+} */
