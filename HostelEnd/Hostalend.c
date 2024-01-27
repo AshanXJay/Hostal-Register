@@ -139,7 +139,8 @@ int main()
            struct tm *tm_info = localtime(&time);
            strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
-           // Print the record details
+        if(hostel == sthostel)
+           {// Print the record details
            printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
 
         }
