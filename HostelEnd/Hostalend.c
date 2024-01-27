@@ -104,8 +104,7 @@ StudentDetails fetch_student_details(char* enroll_num) {
 }
 
 // Main function
-int main()
-{
+int main(){
     int hostel_no; // Variable to hold the hostel number
     char hostel[5];
 

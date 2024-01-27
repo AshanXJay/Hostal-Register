@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void display_splash_screen() {
+void splash_screen() {
     printf("Loading...\n");
     for (int i = 0; i < 10; i++) {
         printf(".");
@@ -12,7 +12,7 @@ void display_splash_screen() {
 }
 
 int main() {
-    display_splash_screen();
+    splash_screen();
     // Your program starts here
     return 0;
 }

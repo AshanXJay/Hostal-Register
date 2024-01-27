@@ -19,7 +19,14 @@ int get_console_height() {
     return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
-void print_centered(char *str) {
+void printc(char *str) {
+    int width = get_console_width();
+    int length = strlen(str);
+    int padding_left = (width - length) / 2;
+    printf("%*s%s\n", padding_left, "", str);
+}
+
+void printcm(char *str) {
     int width = get_console_width();
     int height = get_console_height();
     int length = strlen(str);
@@ -31,11 +38,11 @@ void print_centered(char *str) {
     printf("%*s%s\n", padding_left, "", str);
 }
 
-int main() {
+int main(){
     while (1) {
         system("cls"); // Clear the console
         char str[] = "Hello, World!";
-        print_centered(str);
+        printc(str);
         Sleep(500); // Wait for 500 milliseconds
     }
     return 0;
