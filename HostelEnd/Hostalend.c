@@ -121,10 +121,10 @@ int main()
     // Display the selected hostel
     printf("You selected hostel number: %d\n", hostel_no);
     if(hostel_no == 1) {
-        hostel[5]="BOYS";
+        strcpy(hostel, "BOYS");
         printf("You selected Boys hostel.\n");
     } else if(hostel_no == 2) {
-        hostel[5]="GIRLS";
+        strcpy(hostel, "GIRLS");
         printf("You selected Girls' hostel.\n");
     }
     
@@ -142,10 +142,9 @@ int main()
            struct tm *tm_info = localtime(&time);
            strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
-        if(hostel == sthostel)
-           {// Print the record details
-           printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
-
+            if(strcmp(student.hostel,hostel)==0){
+            printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
+            }
         }
     }
 
