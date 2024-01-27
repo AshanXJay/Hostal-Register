@@ -80,7 +80,9 @@ int main() {
 
     char* role = login(username, password);
     if (role != NULL) {
+        decrypt_username(username);
         printf("Logged in as role: %s\n", role);
+        printf("Decrypted username: %s\n", username);
         free(role);
     }
     return 0;
