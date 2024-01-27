@@ -104,15 +104,7 @@ StudentDetails fetch_student_details(char* enroll_num) {
 }
 
 // Main function
-int main()
-{
-    int hostel_no; // Variable to hold the hostel number
-    char hostel[5];
-
-    printf("Enter the number of the hostel in duty"\n);
-    printf("1.Boys\n");
-    printf("2.girls\n");
-
+int main(){
     int hostel_no; // Variable to hold the hostel number
     char hostel[5];
 
