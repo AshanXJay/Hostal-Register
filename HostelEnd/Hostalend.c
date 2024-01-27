@@ -119,20 +119,6 @@ int main()
     printf("Enter the number of the hostel in duty (1 for Boys hostel, 2 for Girls' hostel): ");
     scanf("%d", &hostel_no); // Read the input from the user
 
-
-    
-    int hostel_no; // Variable to hold the hostel number
-    char hostel[5];
-
-    printf("Enter the number of the hostel in duty (1 for Boys hostel, 2 for Girls' hostel): ");
-    scanf("%d", &hostel_no); // Read the input from the user
-    printf("int hostel_no; // Variable to hold the hostel number
-    char hostel[5];
-
-    printf("Enter the number of the hostel in duty (1 for Boys hostel, 2 for Girls' hostel): ");
-    scanf("%d", &hostel_no); // Read the input from the user
-    scanf("%d", &hostel_no); // Read the input from the user
-
     // Validation loop
     while(hostel_no < 1 || hostel_no > 2) {
         printf("Invalid input. Please enter 1 for Boys hostel or 2 for Girls' hostel.\n");
