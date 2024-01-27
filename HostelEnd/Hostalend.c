@@ -106,6 +106,10 @@ StudentDetails fetch_student_details(char* enroll_num) {
 // Main function
 int main()
 {
+    
+int num;
+printf("enter the number:");
+scanf("%d",&num);
     while (1)
     {
         if (new_records_exist())
@@ -123,6 +127,15 @@ int main()
            // Print the record details
            printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
 
+           if( strcmp "BOYS"="student.hostel")
+           
+           printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
+ 
+ else(int num==2);
+ for(strcmp "GIRLS"=="student.hostel")
+ printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
+ 
+    
         }
     }
 
