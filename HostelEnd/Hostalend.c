@@ -106,6 +106,25 @@ StudentDetails fetch_student_details(char* enroll_num) {
 // Main function
 int main()
 {
+    int hostel; // Variable to hold the hostel number
+
+    printf("Enter the number of the hostel in duty (1 for Boys hostel, 2 for Girls' hostel): ");
+    scanf("%d", &hostel); // Read the input from the user
+
+    // Validation loop
+    while(hostel < 1 || hostel > 2) {
+        printf("Invalid input. Please enter 1 for Boys hostel or 2 for Girls' hostel.\n");
+        scanf("%d", &hostel);
+    }
+
+    // Display the selected hostel
+    printf("You selected hostel number: %d\n", hostel);
+    if(hostel == 1) {
+        printf("You selected Boys hostel.\n");
+    } else if(hostel == 2) {
+        printf("You selected Girls' hostel.\n");
+    }
+    
     while (1)
     {
         if (new_records_exist())
