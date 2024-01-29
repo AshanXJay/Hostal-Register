@@ -31,14 +31,16 @@ int main() {
         char username[MAX_SIZE];
         char password[MAX_SIZE];
 
-        printc("Welcome to UWU Hostel Registry System");    
-        printf("\n\n\n\n\n");
-        printc("Login");
+        
+        printf("\n");
+        printc("Welcome to UWU Hostel Registry System!");    
+        printf("\n\n\n\n");
+        
 
-        printf("Enter username: ");
+        printf("\n\tEnter username: ");
         scanf("%s", username);
 
-        printf("Enter password: ");
+        printf("\n\tEnter password: ");
         scanf("%s", password);
 
         char* role = login(username, password);
