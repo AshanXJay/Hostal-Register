@@ -32,6 +32,16 @@ void printc(char *str) {
     printf("%*s%s\n", padding_left, "", str);
 }
 
+//printm() function for middle Printing
+void printm(char *str) {
+    int height = get_console_height();
+    int length = strlen(str);
+    int padding_top = height / 2;
+    for (int i = 0; i < padding_top; i++) printf("\n");
+    printf("%s\n", str);
+}
+
+
 //printcm() function for Centered Printing with Padding to middle
 void printcm(char *str) {
     int width = get_console_width();

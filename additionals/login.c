@@ -34,7 +34,7 @@ int main() {
         
         printf("\n");
         printc("Welcome to UWU Hostel Registry System!");    
-        printf("\n\n\n\n");
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n");
         
 
         printf("\n\tEnter username: ");
