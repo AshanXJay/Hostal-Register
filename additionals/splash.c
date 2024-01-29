@@ -19,9 +19,9 @@ void welcome_screen() {
     getc(stdin);
     }
 
-int main() {
+/* int main() {
     splash_screen();
     system("cls");
     welcome_screen();
     return 0;
-}
+} */
