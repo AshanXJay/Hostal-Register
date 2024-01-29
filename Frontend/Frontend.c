@@ -31,19 +31,19 @@ int check_enrollment(char *enroll_no) {
 // Function to add a record to the database
 void add_record(char *enroll_no, char *destination, time_t t){
     // Open the file where records are stored
-    FILE *fp=fopen("D:/GitHub/Hostal-Register/data/Records.txt","w");
+    FILE *fp=fopen("D:/GitHub/Hostal-Register/data/Records.txt","a");
     if (fp == NULL) {
-        printf("Failed to create the file.\n");
+        printf("Failed to open the file.\n");
+        return;
     }
     // Write the enrollment number, destination, and current time to the file
     fprintf(fp,"%s ",enroll_no);
     fprintf(fp,"%s ",destination);
-    fprintf(fp, "%ld", (long)t);
+    fprintf(fp, "%ld\n", (long)t);
     printf("Student records saved successfully\n");
     // Close the file
     fclose(fp);
 }
-
 int main() {
     char enroll_input[8];
     char enroll_no[15];
