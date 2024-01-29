@@ -4,9 +4,9 @@
 #include <stdarg.h>
 
 // Function prototypes
-void print_centered(char *str);
+/* void print_centered(char *str);
 int get_console_width();
-int get_console_height();
+int get_console_height(); */
 
 int get_console_width() {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
