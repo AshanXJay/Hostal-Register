@@ -15,11 +15,13 @@ void splash_screen() {
 }
 
 void welcome_screen() {
-
+    printf("Welcome to the UWU Hostal Registry System!\n");
+    printf("Press any key to login...");
+    getch();
 }
 
 int main() {
-    splash_screen();
+    //splash_screen();
     system("cls");
     welcome_screen();
     return 0;
