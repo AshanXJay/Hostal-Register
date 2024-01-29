@@ -12,6 +12,8 @@ void encrypt_password(char* password) {
             password[i] = (c - 'a' + 3) % 26 + 'a';
         } else if (c >= 'A' && c <= 'Z') {
             password[i] = (c - 'A' + 3) % 26 + 'A';
+        } else if (c >= '0' && c <= '9') {
+            password[i] = (c - '0' + 3) % 10 + '0';
         }
     }
 }
@@ -23,7 +25,9 @@ void encrypt_username(char* username){
             username[j] = (c - 'a' + 3) % 26 + 'a';
         } else if (c >= 'A' && c <= 'Z') {
             username[j] = (c - 'A' + 3) % 26 + 'A';
-        } 
+        } else if (c >= '0' && c <= '9') {
+            username[j] = (c - '0' + 3) % 10 + '0';
+        }
     }
 }
 
@@ -34,7 +38,9 @@ void decrypt_username(char* username){
             username[j] = (c - 'a' - 3 + 26) % 26 + 'a';
         } else if (c >= 'A' && c <= 'Z') {
             username[j] = (c - 'A' - 3 + 26) % 26 + 'A';
-        } 
+        } else if (c >= '0' && c <= '9') {
+            username[j] = (c - '0' - 3 + 10) % 10 + '0';
+        }
     }
 }
 

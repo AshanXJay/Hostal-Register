@@ -7,7 +7,6 @@ void splash_screen() {
         system("cls"); // Clear the console
         char str[128];
         printcm("Loading %d%%",i);
-        //printcm("%d",i);
         fflush(stdout);
         Sleep(10); // Wait for 20 milliseconds
     }
@@ -15,14 +14,13 @@ void splash_screen() {
 }
 
 void welcome_screen() {
-    printf("\n");
-    printc("Welcome to the UWU Hostal Registry System!");
+    printcm("Welcome to the UWU Hostal Registry System!");
     printcm("Press enter to login...");
     getc(stdin);
     }
 
 int main() {
-    //splash_screen();
+    splash_screen();
     system("cls");
     welcome_screen();
     return 0;
