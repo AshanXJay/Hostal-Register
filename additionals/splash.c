@@ -16,6 +16,6 @@ void splash_screen() {
 
 int main() {
     splash_screen();
-    // Your program starts here
+    system("cls");
     return 0;
 }
