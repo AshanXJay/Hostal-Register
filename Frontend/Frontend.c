@@ -37,8 +37,9 @@ void add_record(char *enroll_no, char *destination, time_t t){
         return;
     }
     // Write the enrollment number, destination, and current time to the file
-    fprintf(fp,"%s ",enroll_no);
-    fprintf(fp,"%s ",destination);
+    // Use commas as separators
+    fprintf(fp,"%s,",enroll_no);
+    fprintf(fp,"%s,",destination);
     fprintf(fp, "%ld\n", (long)t);
     printf("Student records saved successfully\n");
     // Close the file

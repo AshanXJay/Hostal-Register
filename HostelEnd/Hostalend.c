@@ -63,8 +63,19 @@ RecordDetails get_enrollment_number() {
         // so at the end of the loop, 'line' will contain the last line of the file
     }
 
-    // Assuming the line is in the format "enrollment_number destination time"
-    sscanf(line, "%s %s %ld", record.enroll_num, record.destination, &record.time);
+    // Assuming the line is in the format "enrollment_number,destination,time"
+    char *token = strtok(line, ",");
+    if (token != NULL) {
+        strncpy(record.enroll_num, token, sizeof(record.enroll_num));
+        token = strtok(NULL, ",");
+    }
+    if (token != NULL) {
+        strncpy(record.destination, token, sizeof(record.destination));
+        token = strtok(NULL, ",");
+    }
+    if (token != NULL) {
+        record.time = atol(token);
+    }
 
     fclose(records);
     return record;
