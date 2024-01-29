@@ -6,6 +6,8 @@
 
 //include additional codes
 #include "additionals/splash.c"
+#include "additionals/print.c"
+#include "additionals/encrypt.c"
 
 //defining global variables
 
@@ -16,6 +18,7 @@ void splash_screen();
 // main function
 int main() {
     splash_screen();
+    login();
     return 0;
 }
 
