@@ -3,11 +3,14 @@
 #include "middle.c"
 
 void splash_screen() {
-    printcm("Loading...\n");
-    for (int i = 0; i < 10; i++) {
-        printcm(".");
+    for (int i = 0; i <= 100; i++) {
+        system("cls"); // Clear the console
+        char str[128];
+        printcm("Loading...\n");
+        //sprintf(str, "%d", i);
+        printcm("%d %",i);
         fflush(stdout);
-        sleep(1);
+        Sleep(50); // Wait for 100 milliseconds
     }
     printf("\n");
 }
