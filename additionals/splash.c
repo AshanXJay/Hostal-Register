@@ -17,8 +17,7 @@ void splash_screen() {
 void welcome_screen() {
     printf("\n");
     printc("Welcome to the UWU Hostal Registry System!");
-    printf("\n");
-    printc("Press any key to login...");
+    printcm("Press enter to login...");
     getc(stdin);
     }
 
