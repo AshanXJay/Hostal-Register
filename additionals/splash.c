@@ -19,7 +19,6 @@ void welcome_screen() {
     printc("Welcome to the UWU Hostal Registry System!");
     printf("\n");
     printc("Press any key to login...");
-    
     getc(stdin);
     }
 

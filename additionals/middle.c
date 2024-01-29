@@ -20,11 +20,32 @@ int get_console_height() {
     return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
-void printc(char *str) {
+void printc(const char *format, ...) {
+    char str[1024];
+    va_list args;
+    va_start(args, format);
+    vsprintf(str, format, args);
+    va_end(args);
+
     int width = get_console_width();
     int length = strlen(str);
     int padding_left = (width - length) / 2;
     printf("%*s%s\n", padding_left, "", str);
+}
+
+void printm(const char *format, ...) {
+    char str[1024];
+    va_list args;
+    va_start(args, format);
+    vsprintf(str, format, args);
+    va_end(args);
+
+    int height = get_console_height();
+    int padding_top = height / 2;
+
+    for (int i = 0; i < padding_top; i++) printf("\n");
+
+    printf("%s\n", str);
 }
 
 void printcm(const char *format, ...) {
@@ -44,13 +65,3 @@ void printcm(const char *format, ...) {
 
     printf("%*s%s\n", padding_left, "", str);
 }
-
-/* int main(){
-    while (1) {
-        system("cls"); // Clear the console
-        char str[] = "Hello, World!";
-        printcm(str);
-        Sleep(500); // Wait for 500 milliseconds
-    }
-    return 0;
-} */
