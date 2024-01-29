@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "middle.c"
+#include "print.c"
 
 void splash_screen() {
     for (int i = 0; i <= 100; i++) {
@@ -15,10 +15,13 @@ void splash_screen() {
 }
 
 void welcome_screen() {
-    printf("Welcome to the UWU Hostal Registry System!\n");
-    printf("Press any key to login...");
-    getch();
-}
+    printf("\n");
+    printc("Welcome to the UWU Hostal Registry System!");
+    printf("\n");
+    printc("Press any key to login...");
+    
+    getc(stdin);
+    }
 
 int main() {
     //splash_screen();
