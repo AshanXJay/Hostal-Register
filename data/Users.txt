@@ -1,4 +1,3 @@
-cst22002 ashan
-cst22055 janani
-cst22018 chamudya
-cst22110 chathura
+userfront passfront FRONT
+userboys passboys BOYS
+usergirls passgirls GIRLS
