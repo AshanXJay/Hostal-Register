@@ -44,6 +44,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
     // Close the file
     fclose(fp);
 }
+
 int main() {
     char enroll_input[8];
     char enroll_no[15];
