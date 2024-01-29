@@ -68,7 +68,7 @@ char* login(char* entered_username, char* entered_password) {
     return NULL;
 }
 
-int main() {
+int login() {
     char username[MAX_SIZE];
     char password[MAX_SIZE];
 
@@ -81,9 +81,8 @@ int main() {
     char* role = login(username, password);
     if (role != NULL) {
         decrypt_username(username);
-        printf("Logged in as role: %s\n", role);
+        printf("Logged in");
         printf("Decrypted username: %s\n", username);
-        free(role);
     }
     return 0;
 }
