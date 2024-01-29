@@ -14,8 +14,13 @@ void splash_screen() {
     printf("\n");
 }
 
+void welcome_screen() {
+
+}
+
 int main() {
     splash_screen();
     system("cls");
+    welcome_screen();
     return 0;
 }
