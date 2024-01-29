@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include "print.c"
 #define MAX_SIZE 100
 
 char* login(char* entered_username, char* entered_password) {
@@ -30,6 +30,10 @@ char* login(char* entered_username, char* entered_password) {
 int main() {
         char username[MAX_SIZE];
         char password[MAX_SIZE];
+
+        printc("Welcome to UWU Hostel Registry System");    
+        printf("\n\n\n\n\n");
+        printc("Login");
 
         printf("Enter username: ");
         scanf("%s", username);
