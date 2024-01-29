@@ -74,15 +74,20 @@ char* login(char* entered_username, char* entered_password) {
     return NULL;
 }
 
-int login() {
+int main_login() {
     char username[MAX_SIZE];
     char password[MAX_SIZE];
+    system("cls");
+    printf("\n");
+        printc("Welcome to UWU Hostel Registry System!");    
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n");
+        
 
-    printf("Enter username: ");
-    scanf("%s", username);
+        printf("\n\tEnter username: ");
+        scanf("%s", username);
 
-    printf("Enter password: ");
-    scanf("%s", password);
+        printf("\n\tEnter password: ");
+        scanf("%s", password);
 
     char* role = login(username, password);
     if (role != NULL) {
