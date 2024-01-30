@@ -146,7 +146,7 @@ int main(){
     
     while (1)
     {
-        int count = 0;
+        int count = 1;
         while (new_records_exist()) {
             // Fetch the last record and the corresponding student details
             RecordDetails record = get_enrollment_number();
@@ -159,7 +159,7 @@ int main(){
             strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
             if(strcmp(student.hostel, hostel) == 0) {
-                printf("Student Details\n%d. Enrollment number: %s, Student Name: %s, Destination: %s, Time: %s\n", count+1, record.enroll_num, student.name, record.destination, tm_info);
+                printf("%d. Student Details - Enrollment number: %s, Student Name: %s, Destination: %s, Time: %s\n", count, record.enroll_num, student.name, record.destination, tm_info);
                 count++;
             }
         }
