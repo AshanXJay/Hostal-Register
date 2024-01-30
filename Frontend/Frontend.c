@@ -2,7 +2,9 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
-#include "print.c"
+#include <curl/curl.h>
+
+//#include "print.c"
 
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
@@ -31,23 +33,52 @@ int check_enrollment(char *enroll_no) {
 
 // Function to add a record to the database
 void add_record(char *enroll_no, char *destination, time_t t){
-    // Open the file where records are stored
-    FILE *fp=fopen("D:/GitHub/Hostal-Register/data/Records.txt","a");
-    if (fp == NULL) {
-        printf("Failed to open the file.\n");
-        return;
+    CURL *curl;
+    CURLcode res;
+    FILE *fp;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+
+    if(curl) {
+        fp = fopen("Records.txt","w+");
+        if (fp == NULL) {
+            printf("Failed to open the file.\n");
+            return;
+        }
+
+        // Write the enrollment number, destination, and current time to the file
+        // Use commas as separators
+        fprintf(fp,"%s`",enroll_no);
+        fprintf(fp,"%s`",destination);
+        fprintf(fp, "%ld\n", (long)t);
+        fclose(fp);
+
+        curl_easy_setopt(curl, CURLOPT_URL, "ftpupload.net/Records.txt");
+        curl_easy_setopt(curl, CURLOPT_USERNAME, "if0_35883868");
+        curl_easy_setopt(curl, CURLOPT_PASSWORD, "M5CrjBlJHCogh");
+        curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+
+        fp = fopen("Records.txt", "rb");
+        if (fp == NULL) {
+            printf("Failed to open the file.\n");
+            return;
+        }
+
+        curl_easy_setopt(curl, CURLOPT_READDATA, fp);
+        res = curl_easy_perform(curl);
+
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+
+        fclose(fp);
+        curl_easy_cleanup(curl);
     }
-    // Write the enrollment number, destination, and current time to the file
-    // Use commas as separators
-    fprintf(fp,"%s`",enroll_no);
-    fprintf(fp,"%s`",destination);
-    fprintf(fp, "%ld\n", (long)t);
-    printf("Student records saved successfully\n");
-    // Close the file
-    fclose(fp);
+
+    curl_global_cleanup();
 }
 
-int front() {
+int main() {
     char enroll_input[8];
     char enroll_no[15];
     char destination[50];
