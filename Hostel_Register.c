@@ -22,8 +22,8 @@ int main() {
     char* role = main_login();
     if (strcmp(role, "FRONT") == 0) {
         front();
-    } else if (strcmp(role, "BOYS"||"GIRLS") == 0) {
-        hostal();
+    } else if (strcmp(role, "BOYS") == 0 || strcmp(role, "GIRLS") == 0) {
+        //hostal();
     }
     free(role);
     return 0;
