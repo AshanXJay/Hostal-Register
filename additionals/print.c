@@ -20,6 +20,19 @@ int get_console_height() {
     return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
+void printr(const char *format, ...) {
+    char str[1024];
+    va_list args;
+    va_start(args, format);
+    vsprintf(str, format, args);
+    va_end(args);
+
+    int width = get_console_width();
+    int length = strlen(str);
+    int padding_left = width - length;
+    printf("%*s%s\n", padding_left, "", str);
+}
+
 void printc(const char *format, ...) {
     char str[1024];
     va_list args;

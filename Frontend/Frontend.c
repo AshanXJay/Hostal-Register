@@ -47,7 +47,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
     fclose(fp);
 }
 
-int main() {
+int front() {
     char enroll_input[8];
     char enroll_no[15];
     char destination[50];
