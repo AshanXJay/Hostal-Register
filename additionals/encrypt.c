@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <windows.h>
+
 
 #define MAX_SIZE 100
 
@@ -89,20 +91,36 @@ char* login(char* entered_username, char* entered_password) {
     return NULL;
 }
 
+void get_password(char *password) {
+    char ch;
+    int i = 0;
+    while ((ch = _getch()) != '\r') {
+        if (ch == '\b') { // handle backspace
+            if (i > 0) {
+                i--;
+                printf("\b \b"); // erase previous *
+            }
+            continue;
+        }
+        printf("*");
+        password[i++] = ch;
+    }
+    password[i] = '\0'; // null terminate string
+}
+
 int main_login() {
     char username[MAX_SIZE];
     char password[MAX_SIZE];
     system("cls");
     printf("\n");
-        printc("Welcome to UWU Hostel Registry System!");    
-        printf("\n\n\n\n\n\n\n\n\n\n\n\n");
-        
+    printc("Welcome to UWU Hostel Registry System!");    
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n");
 
-        printf("\n\tEnter username: ");
-        scanf("%s", username);
+    printf("\n\tEnter username: ");
+    scanf("%s", username);
 
-        printf("\n\tEnter password: ");
-        scanf("%s", password);
+    printf("\n\tEnter password: ");
+    get_password(password);
 
     char* role = login(username, password);
     if (role != NULL) {

@@ -2,6 +2,7 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include "print.c"
 
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {

@@ -83,8 +83,7 @@ RecordDetails get_enrollment_number() {
 
 // Struct to hold the student details
 typedef struct {
-    char lastname[50];
-    char initials[50];
+    char name[100];
     char hostel[50];
 } StudentDetails;
 
@@ -93,19 +92,25 @@ StudentDetails fetch_student_details(char* enroll_num) {
     FILE *file = fopen("D:/GitHub/Hostal-Register/data/Students.txt", "r");
     if (file == NULL) {
         printf("Cannot open file\n");
-        return (StudentDetails){"", "", ""};
+        return (StudentDetails){"", ""};
     }
 
-    StudentDetails student = {"", "", ""};
+    StudentDetails student = {"", ""};
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        // Assuming the line is in the format "enrollment_number name hostel"
-        char temp_enroll_num[16];
-        sscanf(line, "%s", temp_enroll_num);
+        // Assuming the line is in the format "enrollment_number,name,hostel"
+        char *temp_enroll_num = strtok(line, "`");
+        char *name = strtok(NULL, "`");
+        char *hostel = strtok(NULL, "\n");
 
         // If the enrollment number in the line matches the input enrollment number
-        if (strcmp(temp_enroll_num, enroll_num) == 0) {
-            sscanf(line, "%*s %s %s %s", student.lastname, student.initials, student.hostel);
+        if (temp_enroll_num != NULL && strcmp(temp_enroll_num, enroll_num) == 0) {
+            if (name != NULL) {
+                strncpy(student.name, name, sizeof(student.name));
+            }
+            if (hostel != NULL) {
+                strncpy(student.hostel, hostel, sizeof(student.hostel));
+            }
             break;
         }
     }
@@ -153,7 +158,7 @@ int main(){
            strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
             if(strcmp(student.hostel,hostel)==0){
-            printf("Student Name: %s %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.lastname, student.initials, record.enroll_num, record.destination, time_str);
+            printf("Student Name: %s, Enrollment number: %s, Destination: %s, Time: %s\n", student.name, record.enroll_num, record.destination, time_str);
             }
         }
     }
