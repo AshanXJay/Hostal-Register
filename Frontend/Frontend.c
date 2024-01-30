@@ -2,10 +2,13 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+<<<<<<< HEAD
 #include <curl/curl.h>
 
 //#include "print.c"
+=======
 #include <windows.h>
+#include <unistd.h>
 #include "../additionals/print.c"
 
 // Function to check if the enrollment number exists in the database
@@ -33,10 +36,26 @@ int check_enrollment(char *enroll_no) {
     // Close the file and return 0 (false) if no match was found
     fclose(s_data);
     return 0;
-}
+} 
 
 // Function to add a record to the database
 void add_record(char *enroll_no, char *destination, time_t t){
+    // Open the file where records are stored
+    FILE *fp=fopen("D:/GitHub/Hostal-Register/data/Records.txt","a");
+    if (fp == NULL) {
+        printf("Failed to open the file.\n");
+        return;
+    }
+    // Write the enrollment number, destination, and current time to the file
+    // Use commas as separators
+    fprintf(fp,"%s`",enroll_no);
+    fprintf(fp,"%s`",destination);
+    fprintf(fp, "%ld\n", (long)t);
+    //printf("\tStudent records saved successfully\n");
+    // Close the file
+    fclose(fp);
+    }
+/*void add_record(char *enroll_no, char *destination, time_t t){
     CURL *curl;
     CURLcode res;
     FILE *fp;
@@ -58,7 +77,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
         fprintf(fp, "%ld\n", (long)t);
         fclose(fp);
 
-        curl_easy_setopt(curl, CURLOPT_URL, "ftpupload.net/Records.txt");
+        curl_easy_setopt(curl, CURLOPT_URL, "ftp://ftpupload.net/Records.txt");
         curl_easy_setopt(curl, CURLOPT_USERNAME, "if0_35883868");
         curl_easy_setopt(curl, CURLOPT_PASSWORD, "M5CrjBlJHCogh");
         curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
@@ -113,9 +132,11 @@ int main() {
     while(1) {
 
         //livetime();
-
+        system("cls");
         printf("\n\n");
         printc("Enter student's details");
+
+        printf("\n\n\n\n\n\n\n\n\n\n");
 
         printf("\n\tEnter student's enrollment number: ");
         scanf("%s", enroll_input);
@@ -131,11 +152,11 @@ int main() {
         // Format the enrollment number
         printf("\t");
         sprintf(enroll_no, "UWU/%s/%s/%s", degree, year, number);
-        printf("%s\n", enroll_no); 
+        //printf("%s\n", enroll_no); 
 
         // If the enrollment number exists in the database
         if(check_enrollment(enroll_no)) {
-            printf("\tEnter destination: ");
+            printf("\n\tEnter destination: ");
             scanf("%s", destination);
 
             // Get the current time
@@ -143,10 +164,13 @@ int main() {
 
             // Add a record to the database
             add_record(enroll_no, destination, t);
-
-            printf("\tSuccessfully updated\n");
+            system("cls");
+            printcm("Successfully updated\n");
+            sleep(2);
         } else {
-            printf("\tInvalid Enrollment number\n");
+            system("cls");
+            printcm("Invalid Enrollment number\n");
+            sleep(2);
         }
     }
 
