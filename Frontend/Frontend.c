@@ -2,7 +2,11 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
-//#include <curl/curl.h>
+<<<<<<< HEAD
+#include <curl/curl.h>
+
+//#include "print.c"
+=======
 #include <windows.h>
 #include <unistd.h>
 #include "../additionals/print.c"
