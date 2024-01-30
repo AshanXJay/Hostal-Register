@@ -51,7 +51,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
     fprintf(fp,"%s`",enroll_no);
     fprintf(fp,"%s`",destination);
     fprintf(fp, "%ld\n", (long)t);
-    printf("\tStudent records saved successfully\n");
+    //printf("\tStudent records saved successfully\n");
     // Close the file
     fclose(fp);
     }
