@@ -44,6 +44,19 @@ void decrypt_username(char* username){
     }
 }
 
+void decrypt_role(char* role){
+    for (int j = 0; role[j] != '\0'; j++) {
+        char c = role[j];
+        if (c >= 'a' && c <= 'z') {
+            role[j] = (c - 'a' - 3 + 26) % 26 + 'a';
+        } else if (c >= 'A' && c <= 'Z') {
+            role[j] = (c - 'A' - 3 + 26) % 26 + 'A';
+        } else if (c >= '0' && c <= '9') {
+            role[j] = (c - '0' - 3 + 10) % 10 + '0';
+        }
+    }
+}
+
 char* login(char* entered_username, char* entered_password) {
     FILE* file = fopen("D:/GitHub/Hostal-Register/data/Users_Encrypt.txt", "r");
     if (file == NULL) {
@@ -92,8 +105,19 @@ int main_login() {
     char* role = login(username, password);
     if (role != NULL) {
         decrypt_username(username);
-        printf("Logged in");
-        printf("Decrypted username: %s\n", username);
+        decrypt_role(role);
+        if (strcmp(role, "FRONT") == 0) {
+            printf("You are successfully logged in to frontend.\n");
+        } else if (strcmp(role, "BOYS") == 0) {
+            printf("You are successfully logged in to Boys hostelend.\n");
+        } else if (strcmp(role, "GIRLS") == 0) {
+            printf("You are successfully logged in to Girls hostelend.\n");
+        }
+        free(role);
     }
+    else {
+        printf("Login failed!\n");
+    }
+    sleep(5000);
     return 0;
 }
