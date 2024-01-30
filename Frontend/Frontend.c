@@ -2,7 +2,7 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
-#include "print.c"
+#include "../additionals/print.c"
 
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
@@ -47,7 +47,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
     fclose(fp);
 }
 
-int front() {
+int main() {
     char enroll_input[8];
     char enroll_no[15];
     char destination[50];
