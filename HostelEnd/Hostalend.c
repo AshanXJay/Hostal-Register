@@ -64,14 +64,14 @@ RecordDetails get_enrollment_number() {
     }
 
     // Assuming the line is in the format "enrollment_number,destination,time"
-    char *token = strtok(line, ",");
+    char *token = strtok(line, "`");
     if (token != NULL) {
         strncpy(record.enroll_num, token, sizeof(record.enroll_num));
-        token = strtok(NULL, ",");
+        token = strtok(NULL, "`");
     }
     if (token != NULL) {
         strncpy(record.destination, token, sizeof(record.destination));
-        token = strtok(NULL, ",");
+        token = strtok(NULL, "`");
     }
     if (token != NULL) {
         record.time = atol(token);
