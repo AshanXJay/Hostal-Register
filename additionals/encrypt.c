@@ -74,7 +74,7 @@ char* login(char* entered_username, char* entered_password) {
     while (fgets(line, sizeof(line), file)) {
         char *username = strtok(line, "`");
         char *password = strtok(NULL, "`");
-        char *role = strtok(NULL, "`");
+        char *role = strtok(NULL, "\n");
 
         if (username != NULL && password != NULL && role != NULL &&
             strcmp(username, entered_username) == 0 && strcmp(password, entered_password) == 0) {
@@ -107,18 +107,20 @@ int main_login() {
     if (role != NULL) {
         decrypt_username(username);
         decrypt_role(role);
+        system("cls");
         if (strcmp(role, "FRONT") == 0) {
-            printf("You are successfully logged in to frontend.\n");
+            printcm("You are successfully logged in to frontend.\n");
         } else if (strcmp(role, "BOYS") == 0) {
-            printf("You are successfully logged in to Boys hostelend.\n");
+            printcm("You are successfully logged in to Boys hostelend.\n");
         } else if (strcmp(role, "GIRLS") == 0) {
-            printf("You are successfully logged in to Girls hostelend.\n");
+            printcm("You are successfully logged in to Girls hostelend.\n");
         }
         free(role);
     }
     else {
-        printf("Login failed!\n");
+        printcm("Login failed!\n");
+        sleep(999);
+        main_login();
     }
-    sleep(5000);
     return 0;
 }
