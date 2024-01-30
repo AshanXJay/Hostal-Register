@@ -2,14 +2,11 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
-<<<<<<< HEAD
 #include <curl/curl.h>
 
 //#include "print.c"
-=======
 #include <windows.h>
 #include "../additionals/print.c"
->>>>>>> 0368c158169ba318530648efd9098703e437cbd3
 
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
@@ -85,8 +82,6 @@ void add_record(char *enroll_no, char *destination, time_t t){
     curl_global_cleanup();
 }
 
-<<<<<<< HEAD
-=======
 /* int livetime() {
     while(1) {
         time_t t = time(NULL);
@@ -109,7 +104,6 @@ void add_record(char *enroll_no, char *destination, time_t t){
     return 0;
 } */
 
->>>>>>> 0368c158169ba318530648efd9098703e437cbd3
 int main() {
     char enroll_input[8];
     char enroll_no[15];
