@@ -69,14 +69,15 @@ char* login(char* entered_username, char* entered_password) {
 
     // Encrypt the entered username
     encrypt_username(entered_username);
-    
 
     char line[MAX_SIZE];
     while (fgets(line, sizeof(line), file)) {
-        char username[MAX_SIZE], password[MAX_SIZE], role[MAX_SIZE];
-        sscanf(line, "%s %s %s", username, password, role);
+        char *username = strtok(line, "`");
+        char *password = strtok(NULL, "`");
+        char *role = strtok(NULL, "`");
 
-        if (strcmp(username, entered_username) == 0 && strcmp(password, entered_password) == 0) {
+        if (username != NULL && password != NULL && role != NULL &&
+            strcmp(username, entered_username) == 0 && strcmp(password, entered_password) == 0) {
             fclose(file);
             return strdup(role);
         }
