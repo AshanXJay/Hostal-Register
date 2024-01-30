@@ -2,6 +2,7 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include <windows.h>
 #include "../additionals/print.c"
 
 // Function to check if the enrollment number exists in the database
@@ -13,11 +14,13 @@ int check_enrollment(char *enroll_no) {
         return 0;
     }
 
-    char enroll_data[15];
+    char line[256];
     // Read each line from the file
-    while (fscanf(s_data, "%s", enroll_data) != EOF) {
+    while (fgets(line, sizeof(line), s_data) != NULL) {
+        // Assuming the line is in the format "enrollment_number,name,hostel"
+        char *temp_enroll_no = strtok(line, "`");
         // If the read enrollment number matches the input enrollment number
-        if (strcmp(enroll_data, enroll_no) == 0) {
+        if (temp_enroll_no != NULL && strcmp(temp_enroll_no, enroll_no) == 0) {
             // Close the file and return 1 (true)
             fclose(s_data);
             return 1;
@@ -47,6 +50,28 @@ void add_record(char *enroll_no, char *destination, time_t t){
     fclose(fp);
 }
 
+/* int livetime() {
+    while(1) {
+        time_t t = time(NULL);
+        struct tm *tm = localtime(&t);
+        char time_str[64];
+        strftime(time_str, sizeof(time_str), "%c", tm);
+
+        // Clear the screen
+        system("cls");
+        // Move the cursor to the beginning of the line with '\r'
+        printr("Current time: %s", time_str);
+
+        // Flush the output buffer
+        fflush(stdout);
+
+        // Wait for 1 second
+        Sleep(1000);
+    }
+
+    return 0;
+} */
+
 int main() {
     char enroll_input[8];
     char enroll_no[15];
@@ -54,7 +79,13 @@ int main() {
     time_t t;
 
     while(1) {
-        printf("Enter student's enrollment number: ");
+
+        //livetime();
+
+        printf("\n\n");
+        printc("Enter student's details");
+
+        printf("\n\tEnter student's enrollment number: ");
         scanf("%s", enroll_input);
 
         // Convert the input enrollment number to uppercase
@@ -66,12 +97,13 @@ int main() {
         char degree[4], year[3], number[4];
         sscanf(enroll_input, "%3s%2s%3s", degree, year, number);
         // Format the enrollment number
+        printf("\t");
         sprintf(enroll_no, "UWU/%s/%s/%s", degree, year, number);
         printf("%s\n", enroll_no); 
 
         // If the enrollment number exists in the database
         if(check_enrollment(enroll_no)) {
-            printf("Enter destination: ");
+            printf("\tEnter destination: ");
             scanf("%s", destination);
 
             // Get the current time
@@ -80,9 +112,9 @@ int main() {
             // Add a record to the database
             add_record(enroll_no, destination, t);
 
-            printf("Successfully updated\n");
+            printf("\tSuccessfully updated\n");
         } else {
-            printf("Invalid Enrollment number\n");
+            printf("\tInvalid Enrollment number\n");
         }
     }
 
