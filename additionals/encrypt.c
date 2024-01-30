@@ -89,20 +89,19 @@ char* login(char* entered_username, char* entered_password) {
     return NULL;
 }
 
-int main_login() {
+char* main_login() {
     char username[MAX_SIZE];
     char password[MAX_SIZE];
     system("cls");
     printf("\n");
-        printc("Welcome to UWU Hostel Registry System!");    
-        printf("\n\n\n\n\n\n\n\n\n\n\n\n");
-        
+    printc("Welcome to UWU Hostel Registry System!");    
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n");
 
-        printf("\n\tEnter username: ");
-        scanf("%s", username);
+    printf("\n\tEnter username: ");
+    scanf("%s", username);
 
-        printf("\n\tEnter password: ");
-        scanf("%s", password);
+    printf("\n\tEnter password: ");
+    scanf("%s", password);
 
     char* role = login(username, password);
     if (role != NULL) {
@@ -117,12 +116,11 @@ int main_login() {
             printcm("You are successfully logged in to Girls hostelend!\n");
         }
         sleep(3);
-        free(role);
+        return role;
     }
     else {
         printcm("Login failed!\n");
         sleep(3);
-        main_login();
+        return NULL;
     }
-    return 0;
 }
