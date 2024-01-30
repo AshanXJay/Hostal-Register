@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <windows.h>
-
+#include <conio.h>
 
 #define MAX_SIZE 100
 
