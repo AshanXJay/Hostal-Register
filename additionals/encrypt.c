@@ -84,7 +84,8 @@ char* login(char* entered_username, char* entered_password) {
     }
 
     fclose(file);
-    printf("Invalid username or password\n");
+    system("cls");
+    printcm("Invalid username or password\n");
     return NULL;
 }
 
@@ -109,17 +110,18 @@ int main_login() {
         decrypt_role(role);
         system("cls");
         if (strcmp(role, "FRONT") == 0) {
-            printcm("You are successfully logged in to frontend.\n");
+            printcm("You are successfully logged in to frontend!\n");
         } else if (strcmp(role, "BOYS") == 0) {
-            printcm("You are successfully logged in to Boys hostelend.\n");
+            printcm("You are successfully logged in to Boys hostelend!\n");
         } else if (strcmp(role, "GIRLS") == 0) {
-            printcm("You are successfully logged in to Girls hostelend.\n");
+            printcm("You are successfully logged in to Girls hostelend!\n");
         }
+        sleep(3);
         free(role);
     }
     else {
         printcm("Login failed!\n");
-        sleep(999);
+        sleep(3);
         main_login();
     }
     return 0;
