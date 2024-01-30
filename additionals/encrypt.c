@@ -61,7 +61,7 @@ char* login(char* entered_username, char* entered_password) {
     char line[MAX_SIZE];
     while (fgets(line, sizeof(line), file)) {
         char username[MAX_SIZE], password[MAX_SIZE], role[MAX_SIZE];
-        sscanf(line, "%s %s %s", username, password, role);
+        sscanf(line,"%s %s %s", username, password, role);
 
         if (strcmp(username, entered_username) == 0 && strcmp(password, entered_password) == 0) {
             fclose(file);
