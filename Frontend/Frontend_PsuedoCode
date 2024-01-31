@@ -1,11 +1,15 @@
-START: Hostel-Register
-    Get a student's enrollment number and read the input.
-    Convert the input enrollment number to uppercase.
-    Split the input enrollment number into degree, year, and number.
-    Format the enrollment number.
-    IF the enrollment number exists in the database (checked using the check_enrollment function):
-        Get a destination and read the input.
-        Get the current time.
-        Add a record to the database using the add_record function.
-        Print a success message and continue the loop.
-    ELSE print an error message and continue the loop.
+START
+  DECLARE enrollment number
+          destination
+          current system time
+  WHILE (Always_true) DO
+    GET Student's enrollment number
+    IF enroll_no exists in database THEN
+      GET destination
+      GET current system time
+      ADD record to database with enrollment number, destination, and time
+    ELSE
+      DISPLAY "Invalid Enrollment number"
+    END IF
+  END WHILE
+END
