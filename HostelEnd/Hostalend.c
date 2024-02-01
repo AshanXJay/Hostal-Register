@@ -140,12 +140,14 @@ int main(){
             strcpy(hostel, "BOYS");
             printcm("BOYS Hostel Selected!\n");
             sleep(2);
+            goto hstlend;
         }
         else if(hostel_no == 2) {
             strcpy(hostel, "GIRLS");
             system("cls");
             printcm("GIRLS Hostel Selected!\n");
-            sleep(2);        
+            sleep(2); 
+            goto hstlend;       
             }
         else{
             system("cls");
@@ -154,6 +156,11 @@ int main(){
             sleep(2);
             main();
         }
+    
+    hstlend: system("cls");
+    printf("\n\n");
+    printc("Signouts");
+    printf("\n\n");
     
     while (1)
     {
@@ -167,11 +174,6 @@ int main(){
             time_t time = (time_t)record.time; // Convert long to time_t
             struct tm *tm_info = localtime(&time);
             strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
-
-            system("cls");
-            printf("\n\n");
-            printc("Signouts");
-            printf("\n\n");
 
             if(strcmp(student.hostel, hostel) == 0) {
                 static int count = 1;
