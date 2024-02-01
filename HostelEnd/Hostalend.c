@@ -126,7 +126,7 @@ int main(){
     int hostel_no; // Variable to hold the hostel number
     char hostel[6];
 
-     system("cls");
+        system("cls");
         printf("\n\n");
         printc("Select hostel on Duty");
 
@@ -168,9 +168,13 @@ int main(){
             struct tm *tm_info = localtime(&time);
             strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
+            system("cls");
+            printf("\n\n");
+            printc("Signouts");
+
             if(strcmp(student.hostel, hostel) == 0) {
                 static int count = 1;
-                printf("Student Details\n%d) Enrollment number: %s, Student Name: %s, Destination: %s, Time: %s\n", count, record.enroll_num, student.name, record.destination, time_str);
+                printf("%d) Enrollment number: %s, Student Name: %s, Destination: %s, Time: %s\n\n", count, record.enroll_num, student.name, record.destination, time_str);
                 count++;
             }
         }
