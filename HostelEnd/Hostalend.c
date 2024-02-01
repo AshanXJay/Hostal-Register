@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include "../additionals/print.c"  
 
 
 // Function to count the number of lines in a file
@@ -125,24 +126,34 @@ int main(){
     int hostel_no; // Variable to hold the hostel number
     char hostel[6];
 
-    printf("Enter the number of the hostel in duty (1 for Boys hostel, 2 for Girls' hostel): ");
-    scanf("%d", &hostel_no); // Read the input from the user
+     system("cls");
+        printf("\n\n");
+        printc("Select hostel on Duty");
 
-    // Validation loop
-    while(hostel_no < 1 || hostel_no > 2) {
-        printf("Invalid input. Please enter 1 for Boys hostel or 2 for Girls' hostel.\n");
-        scanf("%d", &hostel_no);
-    }
+        printf("\n\n\n\n\n\n\n");
 
-    // Display the selected hostel
-    printf("You selected hostel number: %d\n", hostel_no);
-    if(hostel_no == 1) {
-        strcpy(hostel, "BOYS");
-        printf("You selected Boys hostel.\n");
-    } else if(hostel_no == 2) {
-        strcpy(hostel, "GIRLS");
-        printf("You selected Girls' hostel.\n");
-    }
+        printf("\n\t1.BOYS Hostel\n\t2.GIRLS Hostel\n\n\tEnter Hostel Number:");
+        scanf("%d", &hostel_no); // Read the input from the user
+
+        if(hostel_no==1){
+            system("cls");
+            strcpy(hostel, "BOYS");
+            printcm("BOYS Hostel Selected!\n");
+            sleep(2);
+        }
+        else if(hostel_no == 2) {
+            strcpy(hostel, "GIRLS");
+            system("cls");
+            printcm("GIRLS Hostel Selected!\n");
+            sleep(2);        
+            }
+        else{
+            system("cls");
+            printcm("Wrong Selection!\n");
+            printcm("Please select correct hostel");
+            sleep(2);
+            main();
+        }
     
     while (1)
     {
