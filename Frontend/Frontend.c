@@ -2,10 +2,11 @@
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+//#include "curl/include/curl/curl.h"
 //#include <curl/curl.h>
 #include <windows.h>
 #include <unistd.h>
-//#include "../additionals/print.c"
+#include "../additionals/print.c"
 
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
@@ -51,36 +52,43 @@ void add_record(char *enroll_no, char *destination, time_t t){
     // Close the file
     fclose(fp);
     }
+
 /*void add_record(char *enroll_no, char *destination, time_t t){
     CURL *curl;
     CURLcode res;
     FILE *fp;
 
-    curl_global_init(CURL_GLOBAL_DEFAULT);
+    if (curl_global_init(CURL_GLOBAL_DEFAULT) != CURLE_OK) {
+        fprintf(stderr, "curl_global_init() failed\n");
+        return;
+    }
+
     curl = curl_easy_init();
 
     if(curl) {
-        fp = fopen("Records.txt","w+");
+        fp = fopen("D:/GitHub/Hostal-Register/data/Records.txt","w+");
         if (fp == NULL) {
             printf("Failed to open the file.\n");
+            curl_easy_cleanup(curl);
+            curl_global_cleanup();
             return;
         }
 
-        // Write the enrollment number, destination, and current time to the file
-        // Use commas as separators
         fprintf(fp,"%s`",enroll_no);
         fprintf(fp,"%s`",destination);
         fprintf(fp, "%ld\n", (long)t);
         fclose(fp);
 
-        curl_easy_setopt(curl, CURLOPT_URL, "ftp://ftpupload.net/Records.txt");
-        curl_easy_setopt(curl, CURLOPT_USERNAME, "if0_35883868");
-        curl_easy_setopt(curl, CURLOPT_PASSWORD, "M5CrjBlJHCogh");
+        curl_easy_setopt(curl, CURLOPT_URL, "ftp://ftp.eecosl.com:21/home/eecoslco/hostel/Records.txt");
+        curl_easy_setopt(curl, CURLOPT_USERNAME, "hostel@eecosl.com");
+        curl_easy_setopt(curl, CURLOPT_PASSWORD, "v$A3AUOECb)W");
         curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
 
         fp = fopen("Records.txt", "rb");
         if (fp == NULL) {
             printf("Failed to open the file.\n");
+            curl_easy_cleanup(curl);
+            curl_global_cleanup();
             return;
         }
 
@@ -92,10 +100,12 @@ void add_record(char *enroll_no, char *destination, time_t t){
 
         fclose(fp);
         curl_easy_cleanup(curl);
+    } else {
+        fprintf(stderr, "curl_easy_init() failed\n");
     }
 
     curl_global_cleanup();
-}
+}*/
 
 /* int livetime() {
     while(1) {
