@@ -171,6 +171,7 @@ int main(){
             system("cls");
             printf("\n\n");
             printc("Signouts");
+            printf("\n\n");
 
             if(strcmp(student.hostel, hostel) == 0) {
                 static int count = 1;
