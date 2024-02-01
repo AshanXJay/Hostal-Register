@@ -129,7 +129,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
     return 0;
 } */
 
-int front() {
+int main() {
     char enroll_input[8];
     char enroll_no[15];
     char destination[50];

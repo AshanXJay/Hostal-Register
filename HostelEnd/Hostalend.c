@@ -24,7 +24,7 @@ int countLines(FILE *records) {
 int new_records_exist() {
     static int prevCount = 0;
     int newCount;
-    FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
+    FILE *records = fopen("//DESKTOP-QE6QOLV/Shared/Records.txt", "r");
 
     if (records == NULL) {
         printf("Cannot open file \n");
@@ -51,7 +51,7 @@ typedef struct {
 
 // Function to get the last record's details from the file
 RecordDetails get_enrollment_number() {
-    FILE *records = fopen("D:/GitHub/Hostal-Register/data/Records.txt", "r");
+    FILE *records = fopen("//DESKTOP-QE6QOLV/Shared/Records.txt", "r");
     if (records == NULL) {
         printf("Cannot open file\n");
         return(RecordDetails){"", "", 0};
