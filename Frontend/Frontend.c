@@ -38,7 +38,7 @@ int check_enrollment(char *enroll_no) {
 // Function to add a record to the database
 void add_record(char *enroll_no, char *destination, time_t t){
     // Open the file where records are stored
-    FILE *fp=fopen("D:/GitHub/Hostal-Register/data/Records.txt","a");
+    FILE *fp=fopen("D:/Shared/Records.txt","a");
     if (fp == NULL) {
         printf("Failed to open the file.\n");
         return;
