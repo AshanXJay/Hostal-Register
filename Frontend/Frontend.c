@@ -6,7 +6,6 @@
 //#include <curl/curl.h>
 #include <windows.h>
 #include <unistd.h>
-#include "../additionals/print.c"
 
 // Function to check if the enrollment number exists in the database
 int check_enrollment(char *enroll_no) {
@@ -129,7 +128,7 @@ void add_record(char *enroll_no, char *destination, time_t t){
     return 0;
 } */
 
-int main() {
+int frontf() {
     char enroll_input[8];
     char enroll_no[15];
     char destination[50];

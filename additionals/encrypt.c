@@ -2,7 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <unistd.h>
 #include <conio.h>
+
 
 #define MAX_SIZE 100
 
@@ -119,8 +121,8 @@ char* main_login() {
     printf("\n\tEnter username: ");
     scanf("%s", username);
 
-        printf("\n\tEnter password: ");
-        scanf("%s", password);
+    printf("\n\tEnter password: ");
+    get_password(password);
 
     char* role = login(username, password);
     if (role != NULL) {

@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <time.h>
-#include "../additionals/print.c"  
+#include <time.h> 
 
 
 // Function to count the number of lines in a file
@@ -122,27 +121,25 @@ StudentDetails fetch_student_details(char* enroll_num) {
 }
 
 // Main function
-int main(){
-    int hostel_no; // Variable to hold the hostel number
-    char hostel[6];
+void hostelf(char* userrole){
 
-        system("cls");
+       /*  system("cls");
         printf("\n\n");
         printc("Select hostel on Duty");
 
         printf("\n\n\n\n\n\n\n");
 
         printf("\n\t1.BOYS Hostel\n\t2.GIRLS Hostel\n\n\tEnter Hostel Number:");
-        scanf("%d", &hostel_no); // Read the input from the user
+        scanf("%d", &hostel_no); // Read the input from the user */
 
-        if(hostel_no==1){
+        /* if(strcmp(userrole, "BOYS") == 0) {
             system("cls");
             strcpy(hostel, "BOYS");
             printcm("BOYS Hostel Selected!\n");
             sleep(2);
             goto hstlend;
         }
-        else if(hostel_no == 2) {
+        else if(strcmp(userrole, "GIRLS") == 0) {
             strcpy(hostel, "GIRLS");
             system("cls");
             printcm("GIRLS Hostel Selected!\n");
@@ -154,8 +151,8 @@ int main(){
             printcm("Wrong Selection!\n");
             printcm("Please select correct hostel");
             sleep(2);
-            main();
-        }
+            hostelf(userrole);
+        } */
     
     hstlend: system("cls");
     printf("\n\n");
@@ -175,7 +172,7 @@ int main(){
             struct tm *tm_info = localtime(&time);
             strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
-            if(strcmp(student.hostel, hostel) == 0) {
+            if(strcmp(student.hostel, userrole) == 0) {
                 static int count = 1;
                 printf("%d) Enrollment number: %s, Student Name: %s, Destination: %s, Time: %s\n\n", count, record.enroll_num, student.name, record.destination, time_str);
                 count++;
@@ -183,6 +180,4 @@ int main(){
         }
 
     }
-
-    return 0;
 }

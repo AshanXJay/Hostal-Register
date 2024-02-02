@@ -9,8 +9,10 @@
 //#include "additionals/print.c"
 #include "additionals/encrypt.c"
 #include "Frontend/Frontend.c"
+#include "HostelEnd/Hostalend.c"
 
 //defining global variables
+char* userrole;
 
 
 //defining functions
@@ -19,12 +21,15 @@
 // main function
 int main() {
     splash();
-    char* role = main_login();
-    if (strcmp(role, "FRONT") == 0) {
-        front();
-    } else if (strcmp(role, "BOYS") == 0 || strcmp(role, "GIRLS") == 0) {
-        //hostal();
+    login: char* userrole = main_login();
+    if (strcmp(userrole, "FRONT") == 0) {
+        frontf();
+    } else if (strcmp(userrole, "BOYS") == 0 || strcmp(userrole, "GIRLS") == 0) {
+        hostelf(userrole);
     }
-    free(role);
+    else{
+        goto login;
+    }
+    free(userrole);
     return 0;
 }
