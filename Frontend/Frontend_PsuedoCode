@@ -1,15 +1,30 @@
-START
-  DECLARE enrollment number
-          destination
-          current system time
-  WHILE (Always_true) DO
-    GET Student's enrollment number
-    IF enroll_no exists in database THEN
-      GET destination
-      GET current system time
-      ADD record to database with enrollment number, destination, and time
-    ELSE
-      DISPLAY "Invalid Enrollment number"
-    END IF
-  END WHILE
-END
+FUNCTION frontf returns integer:
+    Define enroll_input as character array
+    Define enroll_no as character array
+    Define destination as character array
+    Define t as time_t
+
+    Infinite loop:
+        Prompt the user to enter the student's enrollment number
+        Read the enrollment number
+
+        Convert each character in enrollment number to uppercase
+
+        Define degree, year, and number as character arrays
+        Split enrollment number into degree, year, and number
+
+        Format enrollment number as "UWU/degree/year/number"
+
+        If enrollment number in student database
+            Prompt the user to enter the destination
+            Read the destination
+
+            Get the current time and store it in t
+
+            add record to the database with enrollment number, destination, and t
+            Print "Successfully updated"
+        Else:
+            Print "Invalid Enrollment number"
+
+    Return 0
+END frontf

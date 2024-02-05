@@ -106,28 +106,6 @@ void add_record(char *enroll_no, char *destination, time_t t){
     curl_global_cleanup();
 }*/
 
-/* int livetime() {
-    while(1) {
-        time_t t = time(NULL);
-        struct tm *tm = localtime(&t);
-        char time_str[64];
-        strftime(time_str, sizeof(time_str), "%c", tm);
-
-        // Clear the screen
-        system("cls");
-        // Move the cursor to the beginning of the line with '\r'
-        printr("Current time: %s", time_str);
-
-        // Flush the output buffer
-        fflush(stdout);
-
-        // Wait for 1 second
-        Sleep(1000);
-    }
-
-    return 0;
-} */
-
 int frontf() {
     char enroll_input[8];
     char enroll_no[15];
@@ -135,8 +113,6 @@ int frontf() {
     time_t t;
 
     while(1) {
-
-        //livetime();
         system("cls");
         printf("\n\n");
         printc("Enter student's details");
