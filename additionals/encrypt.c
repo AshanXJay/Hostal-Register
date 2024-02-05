@@ -61,7 +61,7 @@ void decrypt_role(char* role){
     }
 }
 
-char* login(char* entered_username, char* entered_password) {
+char* verify_login(char* entered_username, char* entered_password) {
     FILE* file = fopen("D:/GitHub/Hostal-Register/data/Users_Encrypt.txt", "r");
     if (file == NULL) {
         printf("Could not open file\n");
@@ -110,7 +110,7 @@ void get_password(char *password) {
     password[i] = '\0'; // null terminate string
 }
 
-char* main_login() {
+char* login() {
     char username[MAX_SIZE];
     char password[MAX_SIZE];
     system("cls");
@@ -124,7 +124,7 @@ char* main_login() {
     printf("\n\tEnter password: ");
     get_password(password);
 
-    char* role = login(username, password);
+    char* role = verify_login(username, password);
     if (role != NULL) {
         decrypt_username(username);
         decrypt_role(role);

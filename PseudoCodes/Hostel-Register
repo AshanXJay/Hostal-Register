@@ -1,0 +1,12 @@
+START Hostel-Register
+    Call the login function and store the returned role in userrole
+
+    If userrole is "FRONT":
+        Call the frontf function to handle frontend operations
+    Else if userrole is "BOYS" or "GIRLS":
+        Call the hostelf function with userrole to handle hostel operations
+    Else:
+        Go to the login again to prompt for login again
+
+    Free the memory allocated to userrole
+END

@@ -1,0 +1,54 @@
+Function login returns pointer to character:
+    Define username and password as character arrays of MAX_SIZE
+    
+    Prompt the user to enter a username
+    Read the username from the user
+
+    Prompt the user to enter a password
+    securely read the password from the user
+
+    encrypt username and password
+
+    compare database records with the encrypted username and password, store the returned role
+
+    If the role is not NULL (meaning the login was successful):
+        Decrypt the username and role
+        If the role is "FRONT":
+            Print a success message for frontend login
+        Else if the role is "BOYS":
+            Print a success message for Boys hostelend login
+        Else if the role is "GIRLS":
+            Print a success message for Girls hostelend login
+        Return the role
+    Else (meaning the login failed):
+        Print a failure message
+        Return NULL
+End Function
+
+
+Function login takes entered_username and entered_password as parameters and returns a pointer to character:
+    Open the file "Users_Encrypt.txt" in read mode and assign the file pointer to file
+    If file is NULL (meaning the file could not be opened):
+        Print an error message
+        Return NULL
+
+    Call the encrypt_password function with entered_password to encrypt the entered password
+    Call the encrypt_username function with entered_username to encrypt the entered username
+
+    Define a character array line of size MAX_SIZE
+
+    While there are lines to read from the file:
+        Read a line from the file into line
+        Split the line at "`" and assign the first token to username
+        Split the remaining string at "`" and assign the next token to password
+        Split the remaining string at "\n" and assign the next token to role
+
+        If username, password, and role are not NULL and username matches entered_username and password matches entered_password:
+            Close the file
+            Return a copy of role
+
+    Close the file
+    Clear the console screen
+    Print an error message for invalid username or password
+    Return NULL
+End Function
