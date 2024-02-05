@@ -1,9 +1,15 @@
-START: Hostel-Register
-    Get the user's hostel which in duty
-    IF new record is written in the database
-        read the enrollment number, destination and time of the record
-        Fetch the student's name and hostel from students database
-        Convert time to readable format
-        IF record's hostel matches with the Hostel on duty
-            Print the enrollment number, name, destination, and time.
-    Else Continue the loop
+FUNCTION hostelf takes userrole as parameter:
+
+    Infinite loop:
+        While new record recieved from front-end(listining databse updates):
+            fetch details from last record and store it in structure
+            get corresponding student details from student database and store it in structure
+
+            Define time_str as character array
+            convert leaving time to readable
+
+            If student's hostel matches users hostel on duty:
+                Define count as static integer initialized to 1
+                Print count, record.enroll_num, student.name, record.destination, and time_str
+                Increment count
+END hostelf

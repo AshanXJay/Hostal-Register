@@ -122,39 +122,8 @@ StudentDetails fetch_student_details(char* enroll_num) {
 
 // Main function
 void hostelf(char* userrole){
-
-       /*  system("cls");
-        printf("\n\n");
-        printc("Select hostel on Duty");
-
-        printf("\n\n\n\n\n\n\n");
-
-        printf("\n\t1.BOYS Hostel\n\t2.GIRLS Hostel\n\n\tEnter Hostel Number:");
-        scanf("%d", &hostel_no); // Read the input from the user */
-
-        /* if(strcmp(userrole, "BOYS") == 0) {
-            system("cls");
-            strcpy(hostel, "BOYS");
-            printcm("BOYS Hostel Selected!\n");
-            sleep(2);
-            goto hstlend;
-        }
-        else if(strcmp(userrole, "GIRLS") == 0) {
-            strcpy(hostel, "GIRLS");
-            system("cls");
-            printcm("GIRLS Hostel Selected!\n");
-            sleep(2); 
-            goto hstlend;       
-            }
-        else{
-            system("cls");
-            printcm("Wrong Selection!\n");
-            printcm("Please select correct hostel");
-            sleep(2);
-            hostelf(userrole);
-        } */
     
-    hstlend: system("cls");
+    system("cls");
     printf("\n\n");
     printc("Signouts");
     printf("\n\n");
